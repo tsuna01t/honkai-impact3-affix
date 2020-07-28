@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>詞綴收益計算</title>
+    <script src="./js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td><label for="level">女武神等級:</label></td>
+            <td><input type="number" id="level" value="80" min="1"></td>
+        </tr>
+        <tr>
+            <td><label for="atk">攻擊:</label></td>
+            <td><input type="number" id="atk" min="1"></td>
+        </tr>
+        <tr>
+            <td><label for="crt">會心:</label></td>
+            <td><input type="number" id="crt" min="1"></td>
+        </tr>
+        <tr>
+            <td><label for="crit_rate">爆擊率加成:</label></td>
+            <td><input type="number" id="crit_rate" min="0" step="0.1">%</td>
+        </tr>
+        <tr>
+            <td><label for="crit_dmg">爆擊傷害加成:</label></td>
+            <td><input type="number" id="crit_dmg" min="0" step="0.1">%</td>
+        </tr>
+        <tr>
+            <td>最終爆擊率:</td>
+            <td><span id="final_crit_rate">0</span>%</td>
+        </tr>
+        <tr>
+            <td><label for="affix_atk">詞綴攻擊:</label></td>
+            <td><input type="number" id="affix_atk" min="0" step="0.1"></td>
+        </tr>
+        <tr>
+            <td><label for="affix_crt">詞綴會心:</label></td>
+            <td><input type="number" id="affix_crt" min="0" step="0.1"></td>
+        </tr>
+        <tr>
+            <td><label for="affix_crit_dmg">詞綴爆擊傷害:</label></td>
+            <td><input type="number" id="affix_crit_dmg" min="0" step="0.01">%</td>
+        </tr>
+        <tr>
+            <td>詞綴最終爆擊率:</td>
+            <td><span id="affix_final_crit_rate">0</span>%</td>
+        </tr>
+        <tr>
+            <td>詞綴期望提升:</td>
+            <td><span id="exp_up">0</span>%</td>
+        </tr>
+        <tr>
+            <td>詞綴提升上限(全爆擊):</td>
+            <td><span id="limit_up">0</span>%</td>
+        </tr>
+    </table>
+</body>
+<script>
+    $('table').delegate('input', 'change', function () {
+        var level = Number($('#level').val());
+        var atk = Number($('#atk').val());
+        var crt =  Number($('#crt').val());
+        var crit_rate =  Number($('#crit_rate').val());
+        var crit_dmg = Number($('#crit_dmg').val());
+        var final_crit_rate = $('#final_crit_rate');
+
+        var affix_atk = Number($('#affix_atk').val());
+        var affix_crt = Number($('#affix_crt').val());
+        var affix_crit_dmg = Number($('#affix_crit_dmg').val());
+        var affix_final_crit_rate = $('#affix_final_crit_rate');
+
+        var exp_dmg = $('#exp_dmg');
+        var affix_exp_dmg = $('#affix_exp_dmg');
+        var exp_up = $('#exp_up');
+        var limit_up = $('#limit_up');
+    
+        // 最終爆擊率
+        fcr = Math.floor( crt/(level*5 + 75)*100 ) + crit_rate;
+        affix_fcr = Math.floor( (crt + affix_crt)/(level*5 + 75)*100 ) + crit_rate;
+        if( fcr > 100 ){
+            final_crit_rate.text(100);    
+            affix_final_crit_rate.text(100);
+        }else if( affix_fcr > 100 ){
+            affix_final_crit_rate.text(100);
+        }else{
+            final_crit_rate.text(fcr);
+            affix_final_crit_rate.text(affix_fcr);
+        }
+        // 期望傷害
+        exp_dmg =  atk*(1 - final_crit_rate.text()/100 + final_crit_rate.text()/100 * (2 + crit_dmg/100)) ;
+        // 詞綴
+        affix_exp_dmg =  (atk+affix_atk)*(1 - affix_final_crit_rate.text()/100 + affix_final_crit_rate.text()/100 * (2 + (crit_dmg+affix_crit_dmg)/100)) ;
+
+        // 傷害上限
+        limit_dmg =  atk * (2 + crit_dmg/100) ;
+        // 詞綴
+        affix_limit_dmg =  (atk + affix_atk)*(2 + (crit_dmg + affix_crit_dmg) / 100) ;
+
+        // 期望提升
+        // 提升上限(全爆擊)
+        if (atk) {
+            exp_up.text( ( (affix_exp_dmg/exp_dmg-1) * 100 ).toFixed(2) );
+            limit_up.text( ( (affix_limit_dmg/limit_dmg-1) * 100 ).toFixed(2) );
+        }
+    });
+
+</script>
+</html>
