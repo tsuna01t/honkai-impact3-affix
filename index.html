@@ -272,34 +272,89 @@
     // },rand(10000));
     },1000);
 
+    var Today=new Date();
+
     // 對話
-    var teriri_chat = new Array(
-        "竟然要努力工作來討吾輩的歡心，哼～還真是有趣的想法呢",
-        "嗯～書上說這樣會更可愛。欸！我這是在做什麼呢",
-        "你說我世界第一可愛？你這個人，又在說奇怪的話了",
-        "唉～果然不睡午覺的話還是會很睏",
-        "想和我去吼姆樂園？呵～你還真是可愛啊，刺客先生",
-        "啊～嗯？你剛剛說了什麼？快點告訴我",
-        "喵～行了吧，這是說好的獎勵，這周的工作完成的不錯",
-        "只是完成了一天的任務而已，可不要這樣就得意忘形了",
-        "什麼？有敵人入侵了嗎",
-        "夜深了，請早些休息。還是說，你有話想和我說？",
-        "你只會用這種小把戲，來吸引我的注意力嗎？唉～真是幼稚",
-        "難得一日無事，你不打算和我一起出去逛逛嗎，刺客先生",
-        "你若是想要我在這晴空下一同散步，我也不是不能答應",
-        "我不喜歡睡午覺，那是只有小孩子才熱衷的活動",
-        "陰晴無常，天氣如此，諸事亦然，不必在意，一切照舊便好",
-        "月雪飛花，雖說是一年中難得一見的美景，但我不想出門",
-        "為什麼給我準備了苦瓜汁？那種東西，是人喝的嗎",
+    var teriri_chat_morning = new Array(
         "唉～早安，我都看了幾個時辰的書了",
-        "",
+        "終於醒了嗎，呵～沒想到身為艦長的你也如此貪睡",
+    );
+    var teriri_chat_noon = new Array(
+        "我不喜歡睡午覺，那是只有小孩子才熱衷的活動",
+    );
+    var teriri_chat_afternoon = new Array(
+        "唉～果然不睡午覺的話還是會很睏",
+    );
+    var teriri_chat_night = new Array(
+        "這裡不需要疲憊的戰士，吾輩命令你現在就去休息",
+        "夜深了，請早些休息。還是說，你有話想和我說？",
+        "既然睡不著，就來陪我看看星空吧，你想了解星象嗎",
+    );
+    var teriri_chat_newyear = new Array(
+        "外面很是熱鬧，要和我一起去逛新年廟會嗎",
+    );
+    var teriri_chat_rita = new Array(
+        "今日是煌國宰相麗塔的誕辰，我想你應該沒有忘記吧",
+    );
+    var teriri_chat_shaking = new Array(
+        "欸！怎麼突然晃得這麼厲害？今日應該沒有大風才對",
+        "再進行這種幼稚的行為，我可要喊人了，真的要喊人了",
+        "你只會用這種小把戲，來吸引我的注意力嗎？唉～真是幼稚",
+        "什麼？有敵人入侵了嗎",
+    );
+
+    var teriri_chat = new Array(
+        "啊～嗯？你剛剛說了什麼？快點告訴我",
+        "這麼做就能讓你打起精神來工作了嗎，奇怪的要求",
+        "但凡事我拆解過的物件，皆可復原。什麼？你不信？",
+        "無禮之徒，為何一直盯著我看？難道說，不好看嗎？",
+        "喵～是這樣嗎？哼～沒想到你居然好這口，真是人不可貌相",
+        "那個德麗莎太過分了！他竟然……竟然在假扮我給大家算卦",
+        "若是沒有你，我應該早已經葬身於那片樹海之中了吧",
+        "你說我世界第一可愛？你這個人，又在說奇怪的話了",
+        "只是完成了一天的任務而已，可不要這樣就得意忘形了",
+        "為什麼給我準備了苦瓜汁？那種東西，是人喝的嗎",
+        "都說了我對這種黃色的玩偶並不感興……欸？抱起來好軟",
+        "今日你陪吾輩也夠久了刺客先生，去做你想做的事吧",      
+        "難得一日無事，你不打算和我一起出去逛逛嗎，刺客先生",
+        "想和我去吼姆樂園？呵～你還真是可愛啊，刺客先生",
+        "啊！我的扇子去哪啦，剛才還在這的，那麼大一個呢",
+        "箕星好風，畢星好雨。閒來無事，我教你些觀天象之術吧",
+        "唉～朝日漫漫，真是無趣，快過來陪我聊聊天",
+        "你的手總是那麼溫暖，謝謝，感覺好多了",
+        "在找這個？我方才將他拆下來研究，還未來的及裝回去",
+        "有陣子沒和你一起下棋了，今晚有興趣對弈幾局嗎",
+        "不必道謝，守護你，這便是我身為觀星的責任",
+        "坦言說，自與你相遇之後，感覺時間過得真快",
+        "新衣服？嗯，比起最初認識你的時候，品味算是長進了不少",
+        "竟然要努力工作來討吾輩的歡心，哼～還真是有趣的想法呢",
+        "喵～行了吧，這是說好的獎勵，這周的工作完成的不錯",
+        "嗯～書上說這樣會更可愛。欸！我這是在做什麼呢",
     );
     
     // 點teriri 停止移動並對話
+    var first_click = true;
     $("body").on("click", ".teriri", function(teriri_event){
         $(".teriri").stop();
         $("#popup").show('1000').removeClass('hidden');
-        $("#teriri_chat").html("："+teriri_chat[rand(teriri_chat.length)]);
+
+        if(first_click){
+            first_click = false;
+            if( (Today.getMonth()+1)==1 && Today.getDate()==1 ){
+                $("#teriri_chat").html("："+teriri_chat_newyear);
+            }else if( (Today.getMonth()+1)==3 && Today.getDate()==1 ){
+                $("#teriri_chat").html("："+teriri_chat_rita);
+            }else if( Today.getHours()>=8 && Today.getHours()<=10 ){
+                $("#teriri_chat").html("："+teriri_chat_morning[rand(teriri_chat_morning.length)]);
+            }else if( Today.getHours()>=12 && Today.getHours()<=13 ){
+                $("#teriri_chat").html("："+teriri_chat_noon);
+            }else if( Today.getHours()>=14 && Today.getHours()<=15 ){
+            }else if( Today.getHours()>=22 ){
+                $("#teriri_chat").html("："+teriri_chat_night[rand(teriri_chat_night.length)]);
+            }
+        }else{
+            $("#teriri_chat").html("："+teriri_chat[rand(teriri_chat.length)]);
+        }
 
         $("body").click(function(evt) {
             if($(evt.target).parents("#popup").length == 0 && evt.target.id != "popup") {
