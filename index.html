@@ -7,74 +7,154 @@
     <title>詞綴收益計算</title>
     <link rel="shortcut icon" href="./img/favicon32.ico" type="image/x-icon">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/jquery-3.5.1.min.js"></script>
+    <script src="./js/jQueryRotate.js"></script>
     <!-- bootstrap-4.5.0-dist -->
     <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <script src="./js/jquery-3.5.1.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
 </head>
-<body onload="reburn_teriri()">
+<body>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-12">
+            <div class="col-12 mt-2">
                 <h1 class="text-center">詞綴收益計算</h1>
             </div>
         </div>       
         <div class="row justify-content-center">
-            <table class="table table-striped table-borderless table-sm table-dark col-lg-5 col-11">       
+            <!-- <table class="table table-striped table-borderless table-sm table-dark rounded col-xl-4 col-lg-5 col-md-7 col-sm-9 col-11 mt-4"> -->
+            <table class="table table-striped table-sm table-bordered table-dark mt-4 mb-4 h4">       
                 <tr>
-                    <td class="text "><label for="level">女武神等級</label></td>
-                    <td class="number text-right"><input type="number" id="level" value="80" min="1" max="80"></td>
+                    <td class="font-weight-bold pl-3"><label for="level">女武神等級</label></td>
+                    <td class="text-right pr-3"><input type="number" id="level" class="bg-transparent text-white text-right font-weight-bolder border-0" value="80" min="1" max="80"></td>
                 </tr>
                 <tr>
-                    <td class="text "><label for="atk">攻擊</label></td>
-                    <td class="number text-right"><input type="number" id="atk" min="1"></td>
+                    <td class="font-weight-bold pl-3"><label for="atk">攻擊</label>
+                        <img src="./img/BtnInfo.png" alt="info" class="pb-1" data-toggle="tooltip" data-placement="right" title="填基本屬性顯示的數值即可">
+                    </td>
+                    <td class="text-right pr-3"><input type="number" id="atk" class="bg-transparent text-white text-right font-weight-bolder border-0" min="1"></td>
                 </tr>
                 <tr>
-                    <td class="text "><label for="crt">會心</label></td>
-                    <td class="number text-right"><input type="number" id="crt" min="1"></td>
+                    <td class="font-weight-bold pl-3"><label for="crt">會心</label>
+                        <img src="./img/BtnInfo.png" alt="info" class="pb-1" data-toggle="tooltip" data-placement="right" title="填基本屬性顯示的數值即可">
+                    </td>
+                    <td class="text-right pr-3"><input type="number" id="crt" class="bg-transparent text-white text-right font-weight-bolder border-0" min="1"></td>
                 </tr>
                 <tr>
-                    <td class="text "><label for="crit_rate">爆擊率加成</label></td>
-                    <td class="number text-right"><input type="number" id="crit_rate" min="0" step="0.1">%</td>
+                    <td class="font-weight-bold  align-top pl-3"><label for="crit_rate">爆擊率加成</label>&emsp;&emsp;
+                        <a class="btn btn-sm btn-outline-info" data-toggle="collapse" href="#crit_rate_sum" role="button" aria-expanded="false" aria-controls="collapse" id="crit_rate_sum_help">加總小幫手</a>
+                        <ul class="list-unstyled collapse p-1 h5 text-right" id="crit_rate_sum">
+                            <li class="sum_li"><label for="crit_rate_leader_skill">隊長技能</label></li>
+                            <li class="sum_li"><label for="crit_rate_passive">被動技能</label></li>
+                            <li class="sum_li"><label for="crit_rate_weapon">武器加成</label></li>
+                            <li class="sum_li"><label for="crit_rate_stigmata">聖痕加成</label></li>
+                            <li class="sum_li"><label for="crit_rate_support">隊友輔助</label></li>
+                            <li class="sum_li">
+                                <img src="./img/BtnInfo.png" alt="info" class="info_s pb-1" data-toggle="tooltip" data-placement="left" data-html="true" title="封印之劍勳章 2%<br>輝煌MVP勳章 2%<br>42號勳章 1%">
+                                <label for="crit_rate_medal">勳章加成</label>
+                            </li>
+                            <li class="sum_li">
+                                <img src="./img/BtnInfo.png" alt="info" class="info_s pb-1" data-toggle="tooltip" data-placement="left" data-html="true" title="魂吸I 2%<br>魂吸II 3%<br>魂吸III 4%">
+                                <label for="crit_rate_divine_keys">侵蝕之鍵</label>
+                            </li>
+                        </ul>
+                    </td>
+                    <td class="text-right font-weight-bolder pr-3">
+                        <input type="number" id="crit_rate" class="bg-transparent text-white text-right font-weight-bolder border-0" min="0" step="0.1">%
+                        <ul class="list-unstyled collapse p-1 h5" id="crit_rate_sum">
+                            <li><input type="number" id="crit_rate_leader_skill" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0">%</li>
+                            <li><input type="number" id="crit_rate_passive" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0">%</li>
+                            <li><input type="number" id="crit_rate_weapon" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0">%</li>
+                            <li><input type="number" id="crit_rate_stigmata" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0">%</li>
+                            <li><input type="number" id="crit_rate_support" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0">%</li>
+                            <li><input type="number" id="crit_rate_medal" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0">%</li>
+                            <li><input type="number" id="crit_rate_divine_keys" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0">%</li>
+                        </ul>
+                    </td>
                 </tr>
                 <tr>
-                    <td class="text "><label for="crit_dmg">爆擊傷害加成</label></td>
-                    <td class="number text-right"><input type="number" id="crit_dmg" min="0" step="0.1">%</td>
+                    <td class="font-weight-bold pl-3"><label for="crit_dmg">爆擊傷害加成</label>&emsp;
+                        <a class="btn btn-sm btn-outline-info" data-toggle="collapse" href="#crit_dmg_sum" role="button" aria-expanded="false" aria-controls="collapse" id="crit_dmg_sum_help">加總小幫手</a>
+                        <ul class="list-unstyled collapse p-1 h5 text-right" id="crit_dmg_sum">
+                            <li class="sum_li"><label for="crit_dmg_leader_skill">隊長技能</label></li>
+                            <li class="sum_li"><label for="crit_dmg_passive">被動技能</label></li>
+                            <li class="sum_li"><label for="crit_dmg_weapon">武器加成</label></li>
+                            <li class="sum_li"><label for="crit_dmg_stigmata">聖痕加成</label></li>
+                            <li class="sum_li"><label for="crit_dmg_support">隊友輔助</label></li>
+                            <li class="sum_li">
+                                <img src="./img/BtnInfo.png" alt="info" class="info_s pb-1" data-toggle="tooltip" data-placement="left" data-html="true" title="詛咒之劍勳章 5%<br>逆天者 3%<br>亞空的毀滅者 5%">
+                                <label for="crit_dmg_medal">勳章加成</label>
+                            </li>
+                        </ul>
+                    </td>
+                    <td class="text-right font-weight-bolder pr-3">
+                        <input type="number" id="crit_dmg" class="bg-transparent text-white text-right font-weight-bolder border-0" min="0" step="0.1">%
+                        <ul class=" list-unstyled collapse p-1 h5" id="crit_dmg_sum">
+                            <li><input type="number" id="crit_dmg_leader_skill" class="crit_dmg bg-transparent text-white text-right font-weight-bolder border-0">%</li>
+                            <li><input type="number" id="crit_dmg_passive" class="crit_dmg bg-transparent text-white text-right font-weight-bolder border-0">%</li>
+                            <li><input type="number" id="crit_dmg_weapon" class="crit_dmg bg-transparent text-white text-right font-weight-bolder border-0">%</li>
+                            <li><input type="number" id="crit_dmg_stigmata" class="crit_dmg bg-transparent text-white text-right font-weight-bolder border-0">%</li>
+                            <li><input type="number" id="crit_dmg_support" class="crit_dmg bg-transparent text-white text-right font-weight-bolder border-0">%</li>
+                            <li><input type="number" id="crit_dmg_medal" class="crit_dmg bg-transparent text-white text-right font-weight-bolder border-0">%</li>
+                        </ul>
+                    </td>
                 </tr>
                 <tr>
-                    <td class="text result">最終爆擊率</td>
-                    <td class="number text-right result"><span id="final_crit_rate">0</span> %</td>
+                    <td class="result font-weight-bold pl-3 pt-2 pb-2">最終爆擊率</td>
+                    <td class="result text-right font-weight-bolder font-italic pr-3"><span id="final_crit_rate">0</span> %</td>
                 </tr>
                 <tr>
-                    <td class="text "><img src="./img/VEL03.png" alt="三星詞綴" title="詞綴"><label for="affix_atk">攻擊</label></td>
-                    <td class="number text-right"><input type="number" id="affix_atk" min="0" step="0.1"></td>
+                    <td class="font-weight-bold pl-3">
+                        <img src="./img/VEL03.png" alt="三星詞綴" title="詞綴" class="affix_icon">
+                        <label for="affix_atk">攻擊</label>
+                        <img src="./img/BtnInfo.png" alt="info" class="pb-1" data-toggle="tooltip" data-placement="right" data-html="true" title="有限定角色單條最高 23<br>無限定角色單條最高 19">
+                    </td>
+                    <td class="text-right align-middle pr-3"><input type="number" id="affix_atk" class="bg-transparent text-white text-right font-weight-bolder border-0" min="0" step="0.1"></td>
                 </tr>
                 <tr>
-                    <td class="text "><img src="./img/VEL03.png" alt="三星詞綴" title="詞綴"><label for="affix_crt">會心</label></td>
-                    <td class="number text-right"><input type="number" id="affix_crt" min="0" step="0.1"></td>
+                    <td class="font-weight-bold pl-3">
+                        <img src="./img/VEL03.png" alt="三星詞綴" title="詞綴" class="affix_icon">
+                        <label for="affix_crt">會心</label>
+                        <img src="./img/BtnInfo.png" alt="info" class="pb-1" data-toggle="tooltip" data-placement="right" title="單條最高 13">
+                    </td>
+                    <td class="text-right align-middle pr-3"><input type="number" id="affix_crt" class="bg-transparent text-white text-right font-weight-bolder border-0" min="0" step="0.1"></td>
                 </tr>
                 <tr>
-                    <td class="text "><img src="./img/VEL03.png" alt="三星詞綴" title="詞綴"><label for="affix_crit_dmg">爆擊傷害</label></td>
-                    <td class="number text-right"><input type="number" id="affix_crit_dmg" min="0" step="0.01">%</td>
+                    <td class="font-weight-bold pl-3">
+                        <img src="./img/VEL03.png" alt="三星詞綴" title="詞綴" class="affix_icon">
+                        <label for="affix_crit_dmg">爆擊傷害</label>
+                        <img src="./img/BtnInfo.png" alt="info" class="pb-1" data-toggle="tooltip" data-placement="right" title="單條最高 5.6%">
+                    </td>
+                    <td class="text-right align-middle font-weight-bolder pr-3"><input type="number" id="affix_crit_dmg" class="bg-transparent text-white text-right font-weight-bolder border-0" min="0" step="0.01">%</td>
                 </tr>
                 <tr>
-                    <td class="text result">詞綴最終爆擊率</td>
-                    <td class="number text-right result"><span id="affix_final_crit_rate">0</span> %</td>
+                    <td class="result font-weight-bold pl-3 pt-2 pb-2">最終爆擊率(加詞綴)</td>
+                    <td class="result text-right font-weight-bolder font-italic pr-3"><span id="affix_final_crit_rate">0</span> %</td>
                 </tr>
                 <tr>
-                    <td class="text result">詞綴期望提升</td>
-                    <td class="number text-right result"><span id="exp_up">0</span> %</td>
+                    <td class="result font-weight-bold pl-3 pt-2 pb-2">詞綴期望提升</td>
+                    <td class="result text-right font-weight-bolder font-italic pr-3"><span id="exp_up">0</span> %</td>
                 </tr>
                 <tr>
-                    <td class="text result">詞綴提升上限<small>(全爆擊)</small></td>
-                    <td class="number text-right result"><span id="limit_up">0</span> %</td>
+                    <td class="result font-weight-bold pl-3 pt-2 pb-2">凹全爆擊詞綴提升</td>
+                    <td class="result text-right font-weight-bolder font-italic pr-3"><span id="limit_up">0</span> %</td>
                 </tr>
             </table>
         </div>
+        <div class="hidden shadow bg-white rounded text-center border col-10 align-middle position-absolute p-4" id="popup">
+            <img src="./img/teriri_headshot.png" id="teriri_headshot" alt="觀星頭像"><span id="teriri_chat" class="align-middle h4"></span>
+        </div>
     </div>
-
 </body>
 <script>
+    $("#crit_rate_sum_help").click(function(){
+        $("#crit_rate").toggle();
+    });
+    $("#crit_dmg_sum_help").click(function(){
+        $("#crit_dmg").toggle();
+    });
+
+    // 計算
     $('table').delegate('input', 'change', function () {
         var level = Number($('#level').val());
         var atk = Number($('#atk').val());
@@ -82,6 +162,21 @@
         var crit_rate =  Number($('#crit_rate').val());
         var crit_dmg = Number($('#crit_dmg').val());
         var final_crit_rate = $('#final_crit_rate');
+
+        var crit_rate_leader_skill = Number($('#crit_rate_leader_skill').val());
+        var crit_rate_passive = Number($('#crit_rate_passive').val());
+        var crit_rate_weapon = Number($('#crit_rate_weapon').val());
+        var crit_rate_stigmata = Number($('#crit_rate_stigmata').val());
+        var crit_rate_support = Number($('#crit_rate_support').val());
+        var crit_rate_medal = Number($('#crit_rate_medal').val());
+        var crit_rate_divine_keys = Number($('#crit_rate_divine_keys').val());
+
+        var crit_dmg_leader_skill = Number($('#crit_dmg_leader_skill').val());
+        var crit_dmg_passive = Number($('#crit_dmg_passive').val());
+        var crit_dmg_weapon = Number($('#crit_dmg_weapon').val());
+        var crit_dmg_stigmata = Number($('#crit_dmg_stigmata').val());
+        var crit_dmg_support = Number($('#crit_dmg_support').val());
+        var crit_dmg_medal = Number($('#crit_dmg_medal').val());
 
         var affix_atk = Number($('#affix_atk').val());
         var affix_crt = Number($('#affix_crt').val());
@@ -93,6 +188,19 @@
         var exp_up = $('#exp_up');
         var limit_up = $('#limit_up');
 
+        var crit_rate_sum = 0;
+        $('.crit_rate').each(function () {
+            var v = parseFloat(this.value);
+            if (!isNaN(v)) {
+                crit_rate_sum += v;
+                this.value = v;
+            } else {
+                this.value = '';
+            }
+        });
+        $('#crit_rate').val(crit_rate_sum);
+        crit_rate = crit_rate_sum;
+ 
         fcr = Math.floor( crt/(level*5 + 75)*100 ) + crit_rate;
         affix_fcr = Math.floor( (crt + affix_crt)/(level*5 + 75)*100 ) + crit_rate;
         if( fcr > 100 ){
@@ -105,9 +213,11 @@
             affix_final_crit_rate.text(affix_fcr);
         }
 
+        // 詞綴期望提升
         exp_dmg =  atk*(1 - final_crit_rate.text()/100 + final_crit_rate.text()/100 * (2 + crit_dmg/100)) ;
         affix_exp_dmg =  (atk+affix_atk)*(1 - affix_final_crit_rate.text()/100 + affix_final_crit_rate.text()/100 * (2 + (crit_dmg+affix_crit_dmg)/100)) ;
 
+        // 凹全爆擊詞綴提升
         limit_dmg =  atk * (2 + crit_dmg/100) ;
         affix_limit_dmg =  (atk + affix_atk)*(2 + (crit_dmg + affix_crit_dmg) / 100) ;
 
@@ -117,33 +227,89 @@
         }
     });
 
-    // 設定teriri id
-    let teriri_id = 0;
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
 
-    // 生teriri
-    function reburn_teriri(){
-        $(".container-fluid").append(`<img src="./img/teriri.png" class="teriri" id="teriri${teriri_id}">`);
-        $(`#zb${teriri_id}`).css("right", rand(10)+"%");
-        $(`#zb${teriri_id}`).css("top", rand(10)+"%");
+    // 設定teriri id
+    var teriri_id = 0;
+
+    // 召喚teriri
+    function summon_teriri(){
+        $(".container-fluid").append(`<img src="./img/teriri.png" class="hidden teriri position-absolute" id="teriri${teriri_id}">`);
+        $(".teriri").fadeIn("slow");
+        $(`#teriri${teriri_id}`).css("left", rand(70)+"%");
+        $(`#teriri${teriri_id}`).css("top", rand(70)+"%");
         move_teriri(teriri_id);
-        teriri_id++;
+        // teriri_id++;
     }
 
     // 移動teriri
-    function move_teriri(teriri_id){
-        $(`#teriri${teriri_id}`).animate({left: rand(80)-10+"%", top: rand(80)-10+"%"}, 3000, function(){
-            move_teriri(teriri_id);
+    function move_teriri(id){
+        $(`#teriri${id}`).animate({left: rand(80)-10+"%",top: rand(80)-10+"%"},3000,"swing",function(){
+            move_teriri(id);
         });
     }
 
-    $("body").on("click", ".teriri", function(){
-        alert("teriri");
-    });
+    // 旋轉 
+    var angle = 0;
+    setInterval(function(){
+        angle+=1;
+        $(`#teriri${teriri_id}`).rotate(angle);
+    },10);
 
     // 隨機 0 到 num 的數字
     function rand(num){
         return Math.floor( Math.random()*num );
     }
     
+    // 幾秒後召喚teriri
+    setTimeout(function(){
+        summon_teriri();
+    // },rand(10000));
+    },1000);
+
+    // 對話
+    var teriri_chat = new Array(
+        "竟然要努力工作來討吾輩的歡心，哼～還真是有趣的想法呢",
+        "嗯～書上說這樣會更可愛。欸！我這是在做什麼呢",
+        "你說我世界第一可愛？你這個人，又在說奇怪的話了",
+        "唉～果然不睡午覺的話還是會很睏",
+        "想和我去吼姆樂園？呵～你還真是可愛啊，刺客先生",
+        "啊～嗯？你剛剛說了什麼？快點告訴我",
+        "喵～行了吧，這是說好的獎勵，這周的工作完成的不錯",
+        "只是完成了一天的任務而已，可不要這樣就得意忘形了",
+        "什麼？有敵人入侵了嗎",
+        "夜深了，請早些休息。還是說，你有話想和我說？",
+        "你只會用這種小把戲，來吸引我的注意力嗎？唉～真是幼稚",
+        "難得一日無事，你不打算和我一起出去逛逛嗎，刺客先生",
+        "你若是想要我在這晴空下一同散步，我也不是不能答應",
+        "我不喜歡睡午覺，那是只有小孩子才熱衷的活動",
+        "陰晴無常，天氣如此，諸事亦然，不必在意，一切照舊便好",
+        "月雪飛花，雖說是一年中難得一見的美景，但我不想出門",
+        "為什麼給我準備了苦瓜汁？那種東西，是人喝的嗎",
+        "唉～早安，我都看了幾個時辰的書了",
+        "",
+    );
+    
+    // 點teriri 停止移動並對話
+    $("body").on("click", ".teriri", function(teriri_event){
+        $(".teriri").stop();
+        $("#popup").show('1000').removeClass('hidden');
+        $("#teriri_chat").html("："+teriri_chat[rand(teriri_chat.length)]);
+
+        $("body").click(function(evt) {
+            if($(evt.target).parents("#popup").length == 0 && evt.target.id != "popup") {
+                $('#popup').hide('1000');
+                $(".teriri").stop();
+                move_teriri(teriri_id);
+            }
+        });
+
+        teriri_event.stopPropagation();
+    });
 </script>
 </html>
