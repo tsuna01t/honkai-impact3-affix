@@ -2,103 +2,65 @@
 @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
 
 *{
-    margin: 0;
+    margin: 0 !important;
     font-family: 'Noto Sans TC','Microsoft YaHei';
-    /* color: #FFFFFF; */
-    font-size: 1.2rem;
 }
 
-.teriri{
-    height: 100px;
-    position: absolute;
-    z-index: 10;
-}
-
-body{
-    /* background-color: #115181 !important; */
-    /* background-image: url("../img/SpaceShipBridge_City.png"); */
+/* body{
+    background-color: #115181 !important;
+    background-image: url("../img/SpaceShipBridge_City.png");
     background-repeat: no-repeat;
     background-size:cover;
-    /* filter: blur(15px); */
-}
-
-h1{
-    /* color: #FFFFFF; */
-}
+    filter: blur(15px);
+} */
 
 table{
-    margin-top: 20px;
-    border-radius: 10px;
-    font-weight: bolder;
-    /* background-color: rgba(45, 84, 125, 0.829); */
-    font-weight: 900;
-}
-.result{
-    color: #1cb9f0;
-    padding-top: 10px !important; 
-    padding-bottom: 10px !important; 
-}
-.text{
-    padding-left: 20px !important;
-    font-weight: bold !important;
+    max-width: 500px;
 }
 
-.number{
-    padding-right: 20px !important;
-    font-style: italic;
+.result{
+    color: #1cb9f0;
 }
 
 input{
-    width: 100px;
-    background-color: transparent;
-    border: none;
-    text-align: right;
-    color: #FFFFFF; 
-    font-weight: 900;
+    width: 80px;
 }
 
 /* 隱藏input上下鍵 */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
-    margin: 0;
 }
 
-/* 
-body{
-    background-color: #115181;
-    background-image: url("../img/GachaCurrency.png");
-    background-repeat: no-repeat;
-    background-size:cover;
+.hidden{
+    display: none;
 }
 
-table{
-    margin: auto;
-    margin-top: 20px;
-    background-color: rgba(45, 84, 125, 0.829);
-    border-radius: 10px;
-    padding: 15px;
-    border-spacing:0;
+.teriri{
+    height: 100px;
+    z-index: 10;
+    cursor: pointer;
 }
 
-td{
-    padding-top: 10px;
-    border-bottom: rgba(40, 97, 135, 0.349) 4px solid;
-} */
-
-
-    /* font-style: italic; */
-    /* font-weight: 900; */
-
-
-/* .num{
-    text-align: right;
+#popup{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 11;
 }
 
-
-.text,label,.result{
-    font-weight: bold;
+#teriri_headshot{
+    height: 48px;
 }
-.text,label{
-    color: #1cb9f0;
-} */
+
+.sum_li{
+    padding: 1px 0 1px 0;
+}
+
+.info_s{
+    height: 24px;
+}
+
+.affix_icon{
+    height: 40px;
+}
