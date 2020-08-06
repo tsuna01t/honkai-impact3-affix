@@ -30,13 +30,13 @@
                 </tr>
                 <tr>
                     <td class="font-weight-bold pl-3"><label for="atk">攻擊</label>
-                        <img src="./img/BtnInfo.png" alt="info" class="pb-1" data-toggle="tooltip" data-placement="right" title="填基本屬性顯示的數值即可">
+                        <img src="./img/BtnInfo.png" alt="info" class="info" data-toggle="tooltip" data-placement="right" title="填基本屬性顯示的數值即可">
                     </td>
                     <td class="text-right pr-3"><input type="number" id="atk" class="bg-transparent text-white text-right font-weight-bolder border-0" min="1"></td>
                 </tr>
                 <tr>
                     <td class="font-weight-bold pl-3"><label for="crt">會心</label>
-                        <img src="./img/BtnInfo.png" alt="info" class="pb-1" data-toggle="tooltip" data-placement="right" title="填基本屬性顯示的數值即可">
+                        <img src="./img/BtnInfo.png" alt="info" class="info" data-toggle="tooltip" data-placement="right" title="填基本屬性顯示的數值即可">
                     </td>
                     <td class="text-right pr-3"><input type="number" id="crt" class="bg-transparent text-white text-right font-weight-bolder border-0" min="1"></td>
                 </tr>
@@ -47,28 +47,29 @@
                             <li class="sum_li"><label for="crit_rate_leader_skill">隊長技能</label></li>
                             <li class="sum_li"><label for="crit_rate_passive">被動技能</label></li>
                             <li class="sum_li"><label for="crit_rate_weapon">武器加成</label></li>
-                            <li class="sum_li"><label for="crit_rate_stigmata">聖痕加成</label></li>
-                            <li class="sum_li"><label for="crit_rate_support">隊友輔助</label></li>
+                            <li class="sum_li"><label for="crit_rate_stigmata">聖痕加成</label></li>         
                             <li class="sum_li">
-                                <img src="./img/BtnInfo.png" alt="info" class="info_s pb-1" data-toggle="tooltip" data-placement="left" data-html="true" title="封印之劍勳章 2%<br>輝煌MVP勳章 2%<br>42號勳章 1%">
+                                <img src="./img/BtnInfo.png" alt="info" class="info_s" data-toggle="tooltip" data-placement="left" data-html="true" title="封印之劍勳章 2%<br>輝煌MVP勳章 2%<br>42號勳章 1%">
                                 <label for="crit_rate_medal">勳章加成</label>
                             </li>
+                            <li class="sum_li"><label for="crit_rate_support">隊友輔助</label></li>
                             <li class="sum_li">
-                                <img src="./img/BtnInfo.png" alt="info" class="info_s pb-1" data-toggle="tooltip" data-placement="left" data-html="true" title="魂吸I 2%<br>魂吸II 3%<br>魂吸III 4%">
+                                <img src="./img/BtnInfo.png" alt="info" class="info_s" data-toggle="tooltip" data-placement="left" data-html="true" title="魂吸I 2%<br>魂吸II 3%<br>魂吸III 4%">
                                 <label for="crit_rate_divine_keys">侵蝕之鍵</label>
                             </li>
                         </ul>
                     </td>
                     <td class="text-right font-weight-bolder pr-3">
-                        <input type="number" id="crit_rate" class="bg-transparent text-white text-right font-weight-bolder border-0" min="0" step="0.1">%
+                        <div class="mb-2"><span id="crit_rate_text">0</span> %</div>
+                        <!-- <input type="number" id="crit_rate" class="bg-transparent text-white text-right font-weight-bolder border-0" min="0" step="0.1">% -->
                         <ul class="list-unstyled collapse p-1 h5" id="crit_rate_sum">
-                            <li><input type="number" id="crit_rate_leader_skill" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0">%</li>
-                            <li><input type="number" id="crit_rate_passive" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0">%</li>
-                            <li><input type="number" id="crit_rate_weapon" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0">%</li>
-                            <li><input type="number" id="crit_rate_stigmata" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0">%</li>
-                            <li><input type="number" id="crit_rate_support" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0">%</li>
-                            <li><input type="number" id="crit_rate_medal" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0">%</li>
-                            <li><input type="number" id="crit_rate_divine_keys" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0">%</li>
+                            <li><input type="number" id="crit_rate_leader_skill" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0" min="0" step="0.1">%</li>
+                            <li><input type="number" id="crit_rate_passive" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0" step="0.1">%</li>
+                            <li><input type="number" id="crit_rate_weapon" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0" step="0.1">%</li>
+                            <li><input type="number" id="crit_rate_stigmata" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0" step="0.1">%</li>
+                            <li><input type="number" id="crit_rate_medal" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0" min="0" step="0.1">%</li>
+                            <li><input type="number" id="crit_rate_support" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0" min="0" step="0.1">%</li>
+                            <li><input type="number" id="crit_rate_divine_keys" class="crit_rate bg-transparent text-white text-right font-weight-bolder border-0" min="0" step="1" max="4">%</li>
                         </ul>
                     </td>
                 </tr>
@@ -80,22 +81,23 @@
                             <li class="sum_li"><label for="crit_dmg_passive">被動技能</label></li>
                             <li class="sum_li"><label for="crit_dmg_weapon">武器加成</label></li>
                             <li class="sum_li"><label for="crit_dmg_stigmata">聖痕加成</label></li>
-                            <li class="sum_li"><label for="crit_dmg_support">隊友輔助</label></li>
                             <li class="sum_li">
-                                <img src="./img/BtnInfo.png" alt="info" class="info_s pb-1" data-toggle="tooltip" data-placement="left" data-html="true" title="詛咒之劍勳章 5%<br>逆天者 3%<br>亞空的毀滅者 5%">
+                                <img src="./img/BtnInfo.png" alt="info" class="info_s" data-toggle="tooltip" data-placement="left" data-html="true" title="詛咒之劍勳章 5%<br>逆天者 3%<br>亞空的毀滅者 5%">
                                 <label for="crit_dmg_medal">勳章加成</label>
                             </li>
+                            <li class="sum_li"><label for="crit_dmg_support">隊友輔助</label></li>
                         </ul>
                     </td>
                     <td class="text-right font-weight-bolder pr-3">
-                        <input type="number" id="crit_dmg" class="bg-transparent text-white text-right font-weight-bolder border-0" min="0" step="0.1">%
+                        <div class="mb-2"><span id="crit_dmg_text">0</span> %</div>
+                        <!-- <input type="number" id="crit_dmg" class="bg-transparent text-white text-right font-weight-bolder border-0" min="0" step="0.1">% -->
                         <ul class=" list-unstyled collapse p-1 h5" id="crit_dmg_sum">
-                            <li><input type="number" id="crit_dmg_leader_skill" class="crit_dmg bg-transparent text-white text-right font-weight-bolder border-0">%</li>
-                            <li><input type="number" id="crit_dmg_passive" class="crit_dmg bg-transparent text-white text-right font-weight-bolder border-0">%</li>
-                            <li><input type="number" id="crit_dmg_weapon" class="crit_dmg bg-transparent text-white text-right font-weight-bolder border-0">%</li>
-                            <li><input type="number" id="crit_dmg_stigmata" class="crit_dmg bg-transparent text-white text-right font-weight-bolder border-0">%</li>
-                            <li><input type="number" id="crit_dmg_support" class="crit_dmg bg-transparent text-white text-right font-weight-bolder border-0">%</li>
-                            <li><input type="number" id="crit_dmg_medal" class="crit_dmg bg-transparent text-white text-right font-weight-bolder border-0">%</li>
+                            <li><input type="number" id="crit_dmg_leader_skill" class="crit_dmg bg-transparent text-white text-right font-weight-bolder border-0" min="0" step="0.1">%</li>
+                            <li><input type="number" id="crit_dmg_passive" class="crit_dmg bg-transparent text-white text-right font-weight-bolder border-0" step="0.1">%</li>
+                            <li><input type="number" id="crit_dmg_weapon" class="crit_dmg bg-transparent text-white text-right font-weight-bolder border-0" step="0.1">%</li>
+                            <li><input type="number" id="crit_dmg_stigmata" class="crit_dmg bg-transparent text-white text-right font-weight-bolder border-0" step="0.1">%</li>
+                            <li><input type="number" id="crit_dmg_medal" class="crit_dmg bg-transparent text-white text-right font-weight-bolder border-0" min="0" step="0.1">%</li>
+                            <li><input type="number" id="crit_dmg_support" class="crit_dmg bg-transparent text-white text-right font-weight-bolder border-0" min="0" step="0.1">%</li>
                         </ul>
                     </td>
                 </tr>
@@ -107,7 +109,7 @@
                     <td class="font-weight-bold pl-3">
                         <img src="./img/VEL03.png" alt="三星詞綴" title="詞綴" class="affix_icon">
                         <label for="affix_atk">攻擊</label>
-                        <img src="./img/BtnInfo.png" alt="info" class="pb-1" data-toggle="tooltip" data-placement="right" data-html="true" title="有限定角色單條最高 23<br>無限定角色單條最高 19">
+                        <img src="./img/BtnInfo.png" alt="info" class="info" data-toggle="tooltip" data-placement="right" data-html="true" title="有限定角色單條最高 23<br>無限定角色單條最高 19">
                     </td>
                     <td class="text-right align-middle pr-3"><input type="number" id="affix_atk" class="bg-transparent text-white text-right font-weight-bolder border-0" min="0" step="0.1"></td>
                 </tr>
@@ -115,7 +117,7 @@
                     <td class="font-weight-bold pl-3">
                         <img src="./img/VEL03.png" alt="三星詞綴" title="詞綴" class="affix_icon">
                         <label for="affix_crt">會心</label>
-                        <img src="./img/BtnInfo.png" alt="info" class="pb-1" data-toggle="tooltip" data-placement="right" title="單條最高 13">
+                        <img src="./img/BtnInfo.png" alt="info" class="info" data-toggle="tooltip" data-placement="right" title="單條最高 13">
                     </td>
                     <td class="text-right align-middle pr-3"><input type="number" id="affix_crt" class="bg-transparent text-white text-right font-weight-bolder border-0" min="0" step="0.1"></td>
                 </tr>
@@ -123,21 +125,13 @@
                     <td class="font-weight-bold pl-3">
                         <img src="./img/VEL03.png" alt="三星詞綴" title="詞綴" class="affix_icon">
                         <label for="affix_crit_dmg">爆擊傷害</label>
-                        <img src="./img/BtnInfo.png" alt="info" class="pb-1" data-toggle="tooltip" data-placement="right" title="單條最高 5.6%">
+                        <img src="./img/BtnInfo.png" alt="info" class="info" data-toggle="tooltip" data-placement="right" title="單條最高 5.6%">
                     </td>
                     <td class="text-right align-middle font-weight-bolder pr-3"><input type="number" id="affix_crit_dmg" class="bg-transparent text-white text-right font-weight-bolder border-0" min="0" step="0.01">%</td>
                 </tr>
                 <tr>
-                    <td class="result font-weight-bold pl-3 pt-2 pb-2">最終爆擊率(加詞綴)</td>
-                    <td class="result text-right font-weight-bolder font-italic pr-3"><span id="affix_final_crit_rate">0</span> %</td>
-                </tr>
-                <tr>
                     <td class="result font-weight-bold pl-3 pt-2 pb-2">詞綴期望提升</td>
                     <td class="result text-right font-weight-bolder font-italic pr-3"><span id="exp_up">0</span> %</td>
-                </tr>
-                <tr>
-                    <td class="result font-weight-bold pl-3 pt-2 pb-2">凹全爆擊詞綴提升</td>
-                    <td class="result text-right font-weight-bolder font-italic pr-3"><span id="limit_up">0</span> %</td>
                 </tr>
             </table>
         </div>
@@ -147,13 +141,6 @@
     </div>
 </body>
 <script>
-    $("#crit_rate_sum_help").click(function(){
-        $("#crit_rate").toggle();
-    });
-    $("#crit_dmg_sum_help").click(function(){
-        $("#crit_dmg").toggle();
-    });
-
     // 計算
     $('table').delegate('input', 'change', function () {
         var level = Number($('#level').val());
@@ -163,30 +150,11 @@
         var crit_dmg = Number($('#crit_dmg').val());
         var final_crit_rate = $('#final_crit_rate');
 
-        var crit_rate_leader_skill = Number($('#crit_rate_leader_skill').val());
-        var crit_rate_passive = Number($('#crit_rate_passive').val());
-        var crit_rate_weapon = Number($('#crit_rate_weapon').val());
-        var crit_rate_stigmata = Number($('#crit_rate_stigmata').val());
-        var crit_rate_support = Number($('#crit_rate_support').val());
-        var crit_rate_medal = Number($('#crit_rate_medal').val());
-        var crit_rate_divine_keys = Number($('#crit_rate_divine_keys').val());
-
-        var crit_dmg_leader_skill = Number($('#crit_dmg_leader_skill').val());
-        var crit_dmg_passive = Number($('#crit_dmg_passive').val());
-        var crit_dmg_weapon = Number($('#crit_dmg_weapon').val());
-        var crit_dmg_stigmata = Number($('#crit_dmg_stigmata').val());
-        var crit_dmg_support = Number($('#crit_dmg_support').val());
-        var crit_dmg_medal = Number($('#crit_dmg_medal').val());
-
         var affix_atk = Number($('#affix_atk').val());
         var affix_crt = Number($('#affix_crt').val());
         var affix_crit_dmg = Number($('#affix_crit_dmg').val());
         var affix_final_crit_rate = $('#affix_final_crit_rate');
-
-        var exp_dmg = $('#exp_dmg');
-        var affix_exp_dmg = $('#affix_exp_dmg');
         var exp_up = $('#exp_up');
-        var limit_up = $('#limit_up');
 
         var crit_rate_sum = 0;
         $('.crit_rate').each(function () {
@@ -198,32 +166,40 @@
                 this.value = '';
             }
         });
-        $('#crit_rate').val(crit_rate_sum);
+        $('#crit_rate_text').text(crit_rate_sum);
         crit_rate = crit_rate_sum;
+
+        var crit_dmg_sum = 0;
+        $('.crit_dmg').each(function () {
+            var v = parseFloat(this.value);
+            if (!isNaN(v)) {
+                crit_dmg_sum += v;
+                this.value = v;
+            } else {
+                this.value = '';
+            }
+        });
+        $('#crit_dmg_text').text(crit_dmg_sum);
+        crit_dmg = crit_dmg_sum;
  
         fcr = Math.floor( crt/(level*5 + 75)*100 ) + crit_rate;
         affix_fcr = Math.floor( (crt + affix_crt)/(level*5 + 75)*100 ) + crit_rate;
         if( fcr > 100 ){
             final_crit_rate.text(100);    
-            affix_final_crit_rate.text(100);
+            affix_final_crit_rate = 100;
         }else if( affix_fcr > 100 ){
-            affix_final_crit_rate.text(100);
+            affix_final_crit_rate = 100;
         }else{
             final_crit_rate.text(fcr);
-            affix_final_crit_rate.text(affix_fcr);
+            affix_final_crit_rate = affix_fcr;
         }
 
         // 詞綴期望提升
-        exp_dmg =  atk*(1 - final_crit_rate.text()/100 + final_crit_rate.text()/100 * (2 + crit_dmg/100)) ;
-        affix_exp_dmg =  (atk+affix_atk)*(1 - affix_final_crit_rate.text()/100 + affix_final_crit_rate.text()/100 * (2 + (crit_dmg+affix_crit_dmg)/100)) ;
-
-        // 凹全爆擊詞綴提升
-        limit_dmg =  atk * (2 + crit_dmg/100) ;
-        affix_limit_dmg =  (atk + affix_atk)*(2 + (crit_dmg + affix_crit_dmg) / 100) ;
+        var exp_dmg =  atk*(1 - final_crit_rate.text()/100 + final_crit_rate.text()/100 * (2 + crit_dmg/100)) ;
+        var affix_exp_dmg =  (atk+affix_atk)*(1 - affix_final_crit_rate/100 + affix_final_crit_rate/100 * (2 + (crit_dmg+affix_crit_dmg)/100)) ;
 
         if (atk) {
             exp_up.text( ( (affix_exp_dmg/exp_dmg-1) * 100 ).toFixed(2) );
-            limit_up.text( ( (affix_limit_dmg/limit_dmg-1) * 100 ).toFixed(2) );
         }
     });
 
@@ -268,7 +244,7 @@
     
     // 幾秒後召喚teriri
     setTimeout(function(){
-        summon_teriri();
+        // summon_teriri();
     // },rand(10000));
     },1000);
 
