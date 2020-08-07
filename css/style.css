@@ -23,7 +23,7 @@ table{
 }
 
 input{
-    width: 80px;
+    width: 100px;
 }
 
 /* 隱藏input上下鍵 */
@@ -66,8 +66,25 @@ input::-webkit-inner-spin-button {
     margin-top: -3px !important;
 }
 
+#crit_rate_sum_help,#crit_dmg_sum_help{
+    margin-top: -5px !important;
+}
+
 .affix_icon{
     height: 40px;
     margin-top: -8px !important;
     margin-bottom: -6px !important;
+}
+
+/* input後百分比 */
+.percentage::after,.percentage_sum::after {
+    position: absolute;
+    content: attr(data-unit);
+    right: 0px;
+}
+.percentage input {
+    padding-right: 30px;
+}
+.percentage_sum input {
+    padding-right: 24px;
 }
