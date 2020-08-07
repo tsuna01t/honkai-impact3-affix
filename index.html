@@ -225,14 +225,14 @@
         $(".teriri").fadeIn("slow");
         $(`#teriri${teriri_id}`).css("left", rand(70)+"%");
         $(`#teriri${teriri_id}`).css("top", rand(70)+"%");
-        move_teriri(teriri_id,"slow");
+        move_teriri(teriri_id,3000);
         // teriri_id++;
     }
 
     // 移動teriri
     function move_teriri(id,speed){
         $(`#teriri${id}`).animate({left: rand(80)-10+"%",top: rand(80)-10+"%"},speed,"swing",function(){
-            move_teriri(id,"slow");
+            move_teriri(id,speed);
         });
     }
 
@@ -344,7 +344,7 @@
             if($(evt.target).parents("#popup").length == 0 && evt.target.id != "popup") {
                 $('#popup').hide('1000');
                 $(".teriri").stop();
-                move_teriri(teriri_id,"slow");
+                move_teriri(teriri_id,3000);
             }
         });
 
@@ -373,7 +373,7 @@
                     if($(evt.target).parents("#popup").length == 0 && evt.target.id != "popup") {
                         $('#popup').hide('1000');
                         $(".teriri").stop();
-                        move_teriri(teriri_id,"slow");
+                        move_teriri(teriri_id,3000);
                     }
                 });
             }
