@@ -363,16 +363,17 @@
             if(Math.abs(x-lastX) > speed || Math.abs(y-lastY) > speed) {
                 // 使用者裝置搖動了，觸發響應操作
                 // 此處的判斷依據是使用者裝置的加速度大於我們設定的閾值
-                $("#popup").show('1000').removeClass('hidden');
-                $("#teriri_chat").html("："+teriri_chat_shaking[rand(teriri_chat_shaking.length)]);
+                alert('搖了');
+                // $("#popup").show('1000').removeClass('hidden');
+                // $("#teriri_chat").html("："+teriri_chat_shaking[rand(teriri_chat_shaking.length)]);
 
-                $("body").click(function(evt) {
-                    if($(evt.target).parents("#popup").length == 0 && evt.target.id != "popup") {
-                        $('#popup').hide('1000');
-                        $(".teriri").stop();
-                        move_teriri(teriri_id);
-                    }
-                });
+                // $("body").click(function(evt) {
+                //     if($(evt.target).parents("#popup").length == 0 && evt.target.id != "popup") {
+                //         $('#popup').hide('1000');
+                //         $(".teriri").stop();
+                //         move_teriri(teriri_id);
+                //     }
+                // });
             }
             lastX = x;
             lastY = y;
