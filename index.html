@@ -272,6 +272,9 @@
     var teriri_chat_afternoon = new Array(
         "唉～果然不睡午覺的話還是會很睏",
     );
+    var teriri_chat_offwork = new Array(
+        "只是完成了一天的任務而已，可不要這樣就得意忘形了",
+    );
     var teriri_chat_night = new Array(
         "這裡不需要疲憊的戰士，吾輩命令你現在就去休息",
         "夜深了，請早些休息。還是說，你有話想和我說？",
@@ -298,7 +301,6 @@
         "那個德麗莎太過分了！他竟然……竟然在假扮我給大家算卦",
         "若是沒有你，我應該早已經葬身於那片樹海之中了吧",
         "你說我世界第一可愛？你這個人，又在說奇怪的話了",
-        "只是完成了一天的任務而已，可不要這樣就得意忘形了",
         "為什麼給我準備了苦瓜汁？那種東西，是人喝的嗎",
         "都說了我對這種黃色的玩偶並不感興……欸？抱起來好軟",
         "今日你陪吾輩也夠久了刺客先生，去做你想做的事吧",      
@@ -336,6 +338,8 @@
                 $("#teriri_chat").html("："+teriri_chat_noon);
             }else if( Today.getHours()>=14 && Today.getHours()<=15 ){
                 $("#teriri_chat").html("："+teriri_chat_afternoon);
+            }else if( Today.getHours()>=17 && Today.getHours()<=19 ){
+                $("#teriri_chat").html("："+teriri_chat_offwork);
             }else if( Today.getHours()>=22 ){
                 $("#teriri_chat").html("："+teriri_chat_night[rand(teriri_chat_night.length)]);
             }else{
@@ -356,9 +360,9 @@
         teriri_event.stopPropagation();
     });
 
-    //搖一搖(使用DeviceMotion事件, 推薦,應為可以計算加速度)
+    // 偵測晃動
     if(window.DeviceMotionEvent) {
-        var speed = 10;    // 用來判定的加速度閾值，太大了則很難觸發
+        var speed = 10;    
         var x, y, z, lastX, lastY, lastZ;
         x = y = z = lastX = lastY = lastZ = 0;
         window.addEventListener('devicemotion', function(event){
@@ -366,8 +370,6 @@
             x = acceleration.x;
             y = acceleration.y;
             if(Math.abs(x-lastX) > speed || Math.abs(y-lastY) > speed) {
-                // 使用者裝置搖動了，觸發響應操作
-                // 此處的判斷依據是使用者裝置的加速度大於我們設定的閾值
                 $(".teriri").stop();
                 move_teriri(teriri_id,100);
 
