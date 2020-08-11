@@ -13,11 +13,13 @@ body{
 table{
     max-width: 500px;
 }
-
+td{
+    height: 50px;
+    vertical-align:middle !important;
+}
 .result{
     color: #1cb9f0;
 }
-
 input{
     width: 100px;
 }
@@ -28,11 +30,35 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
-.hidden{
-    display: none;
+/* input後百分比 */
+.percentage::after,.percentage_sum::after {
+    position: absolute;
+    content: attr(data-unit);
+    right: 0px;
+}
+.percentage input {
+    padding-right: 30px;
+}
+.percentage_sum input {
+    padding-right: 24px;
 }
 
-.teriri{
+.sum_li{
+    padding: 1px 0 1px 0;
+}
+
+.info{
+    height: 24px;
+}
+.info_s{
+    height: 20px;
+}
+.info,.info_s,#crit_rate_sum_help,#crit_dmg_sum_help,.affix_icon{
+    margin-top: -5px !important;
+}
+
+/* 觀星 */
+#teriri{
     height: 100px;
     z-index: 10;
     cursor: pointer;
@@ -49,38 +75,11 @@ input::-webkit-inner-spin-button {
     height: 48px;
 }
 
-.sum_li{
-    padding: 1px 0 1px 0;
+.hidden{
+    display: none;
 }
 
-.info{
-    height: 24px;
-    margin-top: -5px !important;
-}
-.info_s{
-    height: 20px;
-    margin-top: -3px !important;
-}
-
-#crit_rate_sum_help,#crit_dmg_sum_help{
-    margin-top: -5px !important;
-}
-
-.affix_icon{
-    height: 40px;
-    margin-top: -8px !important;
-    margin-bottom: -6px !important;
-}
-
-/* input後百分比 */
-.percentage::after,.percentage_sum::after {
-    position: absolute;
-    content: attr(data-unit);
-    right: 0px;
-}
-.percentage input {
-    padding-right: 30px;
-}
-.percentage_sum input {
-    padding-right: 24px;
+.switch{
+    height: 26px;
+    cursor: pointer;
 }
