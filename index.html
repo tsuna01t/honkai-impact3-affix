@@ -198,7 +198,6 @@
 
 
     // 計算
-    $('table').delegate('input,select','change keyup', function () {
         // 女武神
         let level   = Number($('#level').val());
         let atk     = Number($('#atk').val());
@@ -229,7 +228,7 @@
         for (let i = 0; i < affix_id.length; i++) {
             affix[i] = $(affix_id[i]).val() ? Number($(affix_id[i]).val()) : 0;
         }
-        console.log("atk:"+affix[0]);
+        console.log("atk1:"+affix[0]);
         let affix_atk_up = (affix[2]+affix[3]) - (affix[0]+affix[1]);
         let affix_crt_up = (affix[6]+affix[7]) - (affix[4]+affix[5]);
         let affix_crit_dmg_up = (affix[10]+affix[11]) - (affix[8]+affix[9]);
@@ -273,52 +272,18 @@
 
 
     // teriri開關
-    let teriri_switch = false;
     $(".switch").click(function() {
         $(".switch").toggle();
     });
 
     $("#switch_off").click(function() {
-        teriri_switch = true;
-
         $("#teriri").show();
         $("#teriri").css("left" , rand(70)+"%");
         $("#teriri").css("top"  , rand(70)+"%");
         move_teriri(3000);
-
-        // 偵測晃動
-        if(window.DeviceMotionEvent&&teriri_switch) {
-            let speed = 10;    
-            let x, y, z, lastX, lastY, lastZ;
-            x = y = z = lastX = lastY = lastZ = 0;
-            window.addEventListener('devicemotion', function(event){
-                let acceleration = event.accelerationIncludingGravity;
-                x = acceleration.x;
-                y = acceleration.y;
-                if(Math.abs(x-lastX) > speed || Math.abs(y-lastY) > speed) {
-                    $("#teriri").stop();
-                    move_teriri(100);
-
-                    $("#popup").show('1000');
-                    $("#teriri_chat").html("："+teriri_chat_shaking[rand(teriri_chat_shaking.length)]);
-
-                    $("body").click(function(evt) {
-                        if($(evt.target).parents("#popup").length == 0 && evt.target.id != "popup") {
-                            $('#popup').hide('1000');
-                            $("#teriri").stop();
-                            move_teriri(100);
-                        }
-                    });
-                }
-                lastX = x;
-                lastY = y;
-            }, false);
-        }
     });
   
     $("#switch_on").click(function(teriri_event){
-        teriri_switch = false;
-
         $("#teriri").stop();
         $("#teriri").hide(); 
         $("#popup").show('1000');
@@ -437,5 +402,34 @@
 
         teriri_event.stopPropagation();
     });
+
+    // 偵測晃動
+    if(window.DeviceMotionEvent) {
+        let speed = 10;    
+        let x, y, z, lastX, lastY, lastZ;
+        x = y = z = lastX = lastY = lastZ = 0;
+        window.addEventListener('devicemotion', function(event){
+            let acceleration = event.accelerationIncludingGravity;
+            x = acceleration.x;
+            y = acceleration.y;
+            if(Math.abs(x-lastX) > speed || Math.abs(y-lastY) > speed) {
+                $("#teriri").stop();
+                move_teriri(100);
+
+                $("#popup").show('1000');
+                $("#teriri_chat").html("："+teriri_chat_shaking[rand(teriri_chat_shaking.length)]);
+
+                $("body").click(function(evt) {
+                    if($(evt.target).parents("#popup").length == 0 && evt.target.id != "popup") {
+                        $('#popup').hide('1000');
+                        $("#teriri").stop();
+                        move_teriri(100);
+                    }
+                });
+            }
+            lastX = x;
+            lastY = y;
+        }, false);
+    }
 </script>
 </html>
