@@ -198,6 +198,7 @@
 
 
     // 計算
+    $('table').delegate('input,select,td','change keyup mouseenter', function () {
         // 女武神
         let level   = Number($('#level').val());
         let atk     = Number($('#atk').val());
