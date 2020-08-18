@@ -273,7 +273,7 @@
 
 
     // teriri開關
-    let teriri_switch = false ;
+    var teriri_switch = false ;
     $(".switch").click(function() {
         $(".switch").toggle();
     });
@@ -408,8 +408,8 @@
     });
 
     // 偵測晃動
-    // if(window.DeviceMotionEvent && teriri_switch) {
-    if(window.DeviceMotionEvent) {
+    if(window.DeviceMotionEvent && teriri_switch) {
+    // if(window.DeviceMotionEvent) {
         let speed = 10;    
         let x, y, z, lastX, lastY, lastZ;
         x = y = z = lastX = lastY = lastZ = 0;
