@@ -273,18 +273,21 @@
 
 
     // teriri開關
+    let teriri_switch = false;
     $(".switch").click(function() {
         $(".switch").toggle();
     });
 
     $("#switch_off").click(function() {
+        teriri_switch = true;
+
         $("#teriri").show();
         $("#teriri").css("left" , rand(70)+"%");
         $("#teriri").css("top"  , rand(70)+"%");
         move_teriri(3000);
-        
+
         // 偵測晃動
-        if(window.DeviceMotionEvent) {
+        if(window.DeviceMotionEvent&&teriri_switch) {
             let speed = 10;    
             let x, y, z, lastX, lastY, lastZ;
             x = y = z = lastX = lastY = lastZ = 0;
@@ -314,6 +317,8 @@
     });
   
     $("#switch_on").click(function(teriri_event){
+        teriri_switch = false;
+
         $("#teriri").stop();
         $("#teriri").hide(); 
         $("#popup").show('1000');
