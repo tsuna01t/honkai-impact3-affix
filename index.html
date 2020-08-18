@@ -124,7 +124,7 @@
                 </tr>
             </table>
         </div>
-        <img src="./img/teriri.png" class="hidden position-absolute" id="teriri">
+        <img src="./img/teriri.png" class="hidden position-absolute" id="teriri" alt="teriri">
         <div class="hidden shadow bg-white rounded text-center border col-10 align-middle position-absolute p-4" id="popup">
             <img src="./img/teriri_headshot.png" id="teriri_headshot" alt="觀星頭像"><span id="teriri_chat" class="align-middle h4"></span>
         </div>
@@ -142,20 +142,20 @@
                     sum_li:[
                         { id:'crit_rate_leader_skill'   , text:'隊長技能' , step:'1'    , min:'0' },
                         { id:'crit_rate_passive'        , text:'被動技能' , step:'0.1' },
-                        { id:'crit_rate_weapon'         , text:'武器加成' , step:'1' },
+                        { id:'crit_rate_weapon'         , text:'武器加成' , step:'1'   },
                         { id:'crit_rate_stigmata'       , text:'聖痕加成' , step:'0.1' },
                         { id:'crit_rate_medal'          , text:'勳章加成' , step:'1'    , min:'0'    , title:'封印之劍勳章 2%<br>輝煌MVP勳章 2%<br>42號勳章 1%' },
                         { id:'crit_rate_support'        , text:'隊友輔助' , step:'0.1'  , min:'0' },
-                        { id:'crit_rate_divine_keys'    , text:'侵蝕之鍵' , step:'1'    , min:'0'    , title:'魂吸I 2%<br>魂吸II 3%<br>魂吸III 4%' },
+                        { id:'crit_rate_divine_keys'    , text:'侵蝕之鍵' , step:'1'    , min:'0'    , title:'魂吸III 4%<br>魂吸II 3%<br>魂吸I 2%' },
                     ]
                 },
                 { id:'crit_dmg' , text: '爆擊傷害' , data_target:'.crit_dmg_sum' , class:'crit_dmg_sum' , text_id:'crit_dmg_text' ,
                     sum_li:[
                         { id:'crit_dmg_leader_skill'    , text:'隊長技能' , step:'1'    , min:'0' },
                         { id:'crit_dmg_passive'         , text:'被動技能' , step:'0.1' },
-                        { id:'crit_dmg_weapon'          , text:'武器加成' , step:'1' },
+                        { id:'crit_dmg_weapon'          , text:'武器加成' , step:'1'   },
                         { id:'crit_dmg_stigmata'        , text:'聖痕加成' , step:'0.1' },
-                        { id:'crit_dmg_medal'           , text:'勳章加成' , step:'1'    , min:'0'    , title:'詛咒之劍勳章 5%<br>逆天者 3%<br>亞空的毀滅者 5%' },
+                        { id:'crit_dmg_medal'           , text:'勳章加成' , step:'1'    , min:'0'    , title:'詛咒之劍勳章 5%<br>亞空的毀滅者 5%<br>逆天者 3%' },
                         { id:'crit_dmg_support'         , text:'隊友輔助' , step:'0.1'  , min:'0' },
                     ]
                 },
@@ -408,7 +408,8 @@
     });
 
     // 偵測晃動
-    if(window.DeviceMotionEvent && teriri_switch) {
+    // if(window.DeviceMotionEvent && teriri_switch) {
+    if(window.DeviceMotionEvent) {
         let speed = 10;    
         let x, y, z, lastX, lastY, lastZ;
         x = y = z = lastX = lastY = lastZ = 0;
