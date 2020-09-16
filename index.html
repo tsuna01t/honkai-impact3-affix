@@ -26,7 +26,15 @@
     </script>
 </head>
 <body class="bg-secondary">
-    <div class="container-fluid">
+    <div class="container-fluid position-fixed" id="loading">
+        <div class="row justify-content-center align-items-center vh-100">
+            <diV class="text-light justify-content-center">
+                <div class="justify-content-center"><img src="./img/teriri.png" alt="teriri" id="loading_teriri"></div>   
+                <div class="row justify-content-center mt-2 h4">陣法繪製中...</div>
+            </diV>
+        </div>
+    </div>
+    <div class="container-fluid hidden" id="main">
         <div class="row justify-content-center">
             <div class="col-12 mt-2">
                 <h1 class="text-center text-light">詞綴提升對比</h1>
@@ -131,6 +139,11 @@
     </div>
 </body>
 <script>
+    $(window).on('load',function(){
+        $('#loading').hide(1000);
+        $('#main').show(1000);
+    });
+
     var table = new Vue({
         el: '#table',
         data: {
@@ -309,6 +322,7 @@
     let angle = 0;
     setInterval(function(){
         angle += 1;
+        // $("#loading_teriri").rotate(angle);
         $("#teriri").rotate(angle);
     },10);
 
