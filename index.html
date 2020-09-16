@@ -140,8 +140,8 @@
 </body>
 <script>
     $(window).on('load',function(){
-        $('#loading').hide(1000);
-        $('#main').show(1000);
+        $('#loading').fadeOut(1000);
+        $('#main').fadeIn(1000);
     });
 
     var table = new Vue({
@@ -298,12 +298,12 @@
     $("#switch_on").click(function(teriri_event){
         $("#teriri").stop();
         $("#teriri").hide(); 
-        $("#popup").show('1000');
+        $("#popup").fadeIn(1000);
         $("#teriri_chat").html("：今日你陪吾輩也夠久了刺客先生，去做你想做的事吧");
         
         $("body").click(function(evt) {
             if($(evt.target).parents("#popup").length == 0 && evt.target.id != "popup") {
-                $('#popup').hide('1000');
+                $('#popup').fadeOut(1000);
             }
         });
 
@@ -380,7 +380,7 @@
     let first_click = true;
     $("body").on("click", "#teriri", function(teriri_event){
         $("#teriri").stop();
-        $("#popup").show('1000');
+        $("#popup").fadeIn(1000);
 
         if(first_click){
             first_click = false;
@@ -407,7 +407,7 @@
 
         $("body").click(function(evt) {
             if($(evt.target).parents("#popup").length == 0 && evt.target.id != "popup") {
-                $('#popup').hide('1000');
+                $('#popup').fadeOut(1000);
                 $("#teriri").stop();
                 move_teriri(100);
             }
@@ -429,12 +429,12 @@
                 $("#teriri").stop();
                 move_teriri(100);
 
-                $("#popup").show('1000');
+                $("#popup").fadeIn(1000);
                 $("#teriri_chat").html("："+teriri_chat_shaking[rand(teriri_chat_shaking.length)]);
 
                 $("body").click(function(evt) {
                     if($(evt.target).parents("#popup").length == 0 && evt.target.id != "popup") {
-                        $('#popup').hide('1000');
+                        $('#popup').fadeOut(1000);
                         $("#teriri").stop();
                         move_teriri(100);
                     }
